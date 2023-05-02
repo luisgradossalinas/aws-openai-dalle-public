@@ -51,7 +51,7 @@ Pegar el resultado en un navegador y veremos lo siguiente.
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235770977-94bdad22-57d1-473d-9fc2-c2c03dc94938.png">
 
-<img width="891" src="https://user-images.githubusercontent.com/2066453/235746557-d2619798-95cc-4041-addd-a6a37b9fc004.png">
+<img width="800" src="https://user-images.githubusercontent.com/2066453/235771210-d6df0128-375c-41da-9ba8-e3270903ba10.png">
 
 <img width="491" src="https://user-images.githubusercontent.com/2066453/235746691-7b926dd2-56d9-4451-a53f-17591494b3aa.png">
 
