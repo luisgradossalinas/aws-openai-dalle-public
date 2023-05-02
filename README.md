@@ -22,14 +22,10 @@ En la línea 73, ingresar el valor de nuestra instancia y token de UltraMsg.
 
 Ejecutar en Cloud9
 
-	cd aws-openai-dalle
+	cd aws-openai-dalle-public
 	sh sh/01_Start_Deploy.sh
 
 Esperamos que se cree el stack en CloudFormation.
-
-Ejecutar el python generate-image.py en Cloud9 (Enviará un mensaje a Kinesis Data Streams que será leído por una función Lambda)
-
-	python3 generate-image.py
 
 Esperamos unos segundos y recibiremos un mensaje por WhatsApp con la imagen generado por Dall-e.
 
