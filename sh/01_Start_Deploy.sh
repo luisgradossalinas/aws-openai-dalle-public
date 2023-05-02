@@ -9,4 +9,6 @@ sleep 5
 
 aws s3 cp lambda/awsdalle.zip s3://${PROJECT}-code-${ACCOUNT_ID}/lambda/
 
+pip3 install -r web/requirements.txt
+
 aws cloudformation create-stack --stack-name StackDalle --template-body file://dalle.yaml --capabilities CAPABILITY_NAMED_IAM
