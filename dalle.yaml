@@ -1,0 +1,154 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Integration AWS with Dall-e"
+
+Parameters:
+
+  pNameProject:
+    Description: Project name
+    Type: String
+    Default: dalle
+
+  pNameStream: 
+    Description: Stream name
+    Type: String
+    Default: StreamDalle
+
+  pNameSecret:
+    Type: String
+    Default: APIKeyDalle
+
+  pNameSecretUltraMsg:
+    Type: String
+    Default: UltraMSGData
+
+  pTableName:
+    Type: String
+    Default: dalle_data
+
+  pNameLambda:
+    Description: Lambda name
+    Type: String
+    Default: fnc-read-kinesis-generate-image-dalle
+
+Resources:
+
+  rBucketDalle:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Join [ -, [!Ref pNameProject, "images", !Ref AWS::AccountId ] ]
+      
+  rDynamoDBTableDalle: 
+      Type: AWS::DynamoDB::Table
+      Properties: 
+          TableName: !Ref pTableName
+          AttributeDefinitions: 
+          - 
+            AttributeName: "id"
+            AttributeType: "S"
+          KeySchema: 
+          - 
+            AttributeName: "id"
+            KeyType: "HASH"
+          BillingMode : PAY_PER_REQUEST
+
+  rStream:  
+    Type: AWS::Kinesis::Stream 
+    Properties: 
+      Name: !Ref pNameStream
+      RetentionPeriodHours: 24
+      ShardCount: 1
+
+  rSecretDalle:
+    Type: 'AWS::SecretsManager::Secret'
+    Properties:
+      Name: !Ref pNameSecret
+      Description: Almacena token de OpenAI
+      SecretString: '{"api_key":"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"}' #Ingresa tu API Key de OpenAI
+
+  rSecretUltraMsg:
+    Type: 'AWS::SecretsManager::Secret'
+    Properties:
+      Name: !Ref pNameSecretUltraMsg
+      Description: Almacena token de OpenAI
+      SecretString: '{"instance" : "instance44701", "token" : "tgy6vzd34v1t3z5i"}' #Ingresa tus datos de ultramsg
+
+  rLambdaDalle:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.10
+      FunctionName: !Ref pNameLambda
+      Description: Integrate with Dalle
+      Role: !GetAtt rLambdaDalleRole.Arn
+      Handler: index.lambda_handler
+      Timeout: 500
+      MemorySize: 128
+      Environment:
+        Variables: 
+          SM_DALLE: !Ref pNameSecret
+          SM_ULTRAMSG: !Ref pNameSecretUltraMsg
+          DYNAMO_TABLE: !Ref rDynamoDBTableDalle
+          BUCKET_NAME: !Join [ -, [!Ref pNameProject, "images", !Ref AWS::AccountId ] ] 
+      Code:
+        S3Bucket: !Sub "${pNameProject}-code-${AWS::AccountId}"
+        S3Key: lambda/awsdalle.zip
+
+  rLambdaDalleRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+            Action: "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        - PolicyName: !Sub 'PolicyDalle'
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+                - logs:CreateLogGroup
+                Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*'
+              - Effect: Allow
+                Action:
+                - secretsmanager:GetSecretValue
+                Resource:
+                - !Ref rSecretDalle
+                - !Ref rSecretUltraMsg
+              - Effect: Allow
+                Action:
+                - dynamodb:PutItem
+                - dynamodb:GetItem
+                - dynamodb:BatchWriteItem
+                Resource:
+                - !GetAtt rDynamoDBTableDalle.Arn
+              - Effect: Allow
+                Action:
+                - kinesis:DescribeStream
+                - kinesis:GetShardIterator
+                - kinesis:GetRecords
+                Resource:
+                - !GetAtt rStream.Arn
+              - Effect: Allow
+                Action:
+                - s3:PutObject
+                - s3:GetObject
+                Resource:
+                - !Sub "arn:aws:s3:::${rBucketDalle}/*"
+                - !Sub "arn:aws:s3:::${rBucketDalle}"
+                  
+  rTriggerLambdaKinesis: 
+      Type: AWS::Lambda::EventSourceMapping
+      DependsOn: rLambdaDalle
+      Properties: 
+        EventSourceArn: !GetAtt rStream.Arn
+        FunctionName: !Ref pNameLambda
+        StartingPosition: "LATEST"
+        BatchSize: 100
+        MaximumBatchingWindowInSeconds: 0
