@@ -1,6 +1,6 @@
 # AWS integration with Dall-e (OpenAI) and WhatsApp
 
-![openai-chatgpt-dalle - aws-dalle](https://user-images.githubusercontent.com/2066453/235266706-1330bb0d-b68a-4fde-97e7-6b5e868a8339.png)
+<img width="900" src="https://user-images.githubusercontent.com/2066453/235762189-ece5ec56-84aa-4fc3-97fe-0e265a69d36f.png">
 
 ## Requisitos
 
