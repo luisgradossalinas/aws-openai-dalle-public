@@ -45,7 +45,7 @@ Abrimos un nuevo terminal en Cloud9 y ejecutamos lo siguiente:
 
 	curl -s http://checkip.amazonaws.com | awk {'print "http://" $1 ":8081"'}
 	
-Pegar el resultado en un navegador y veremos lo siguiente.
+Pegar el resultado en un navegador y veremos la siguiente página.
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235770651-bfd15ec9-618d-4ef7-a45f-c7e0e40bac6a.png">
 
