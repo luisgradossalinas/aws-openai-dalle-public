@@ -49,9 +49,7 @@ Pegar el resultado en un navegador y veremos lo siguiente.
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235770651-bfd15ec9-618d-4ef7-a45f-c7e0e40bac6a.png">
 
-Esperamos unos segundos y recibiremos un mensaje por WhatsApp con la imagen generado por Dall-e.
-
-<img width="891" src="https://user-images.githubusercontent.com/2066453/235746888-fd399803-6466-43ed-aa4a-a94a7439e5f3.png">
+<img width="800" src="https://user-images.githubusercontent.com/2066453/235770977-94bdad22-57d1-473d-9fc2-c2c03dc94938.png">
 
 <img width="891" src="https://user-images.githubusercontent.com/2066453/235746557-d2619798-95cc-4041-addd-a6a37b9fc004.png">
 
