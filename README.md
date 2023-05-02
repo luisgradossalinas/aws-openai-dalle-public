@@ -12,7 +12,7 @@
 
 Ejecutar en Cloud9.
 
-	git clone https://github.com/luisgradossalinas/aws-openai-dalle
+	git clone https://github.com/luisgradossalinas/aws-openai-dalle-public
 
 Abrir el contenido del archivo falle.yaml e ingresamos en la línea 66 nuestro API Key de OpenAI.
 
