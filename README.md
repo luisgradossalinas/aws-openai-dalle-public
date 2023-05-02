@@ -16,7 +16,7 @@ Ejecutar en Cloud9.
 
 Abrir el contenido del archivo falle.yaml e ingresamos en la línea 66 nuestro API Key de OpenAI.
 
-![image](https://user-images.githubusercontent.com/2066453/235266795-fc85d4a8-ef15-49ea-93b9-b4a93cabf922.png)
+<img width="900" src="https://user-images.githubusercontent.com/2066453/235765642-9e08e73a-7495-414d-bfc9-6712c19bdbda.png">
 
 En la línea 73, ingresar el valor de nuestra instancia y token de UltraMsg.
 
