@@ -51,8 +51,6 @@ Pegar el resultado en un navegador y veremos la siguiente página.
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235816776-54eb62fc-0641-4879-8f7f-36ce297480ea.png">
 
-<img width="800" src="https://user-images.githubusercontent.com/2066453/235771210-d6df0128-375c-41da-9ba8-e3270903ba10.png">
-
 <img width="491" src="https://user-images.githubusercontent.com/2066453/235746691-7b926dd2-56d9-4451-a53f-17591494b3aa.png">
 
 ## Documentación
