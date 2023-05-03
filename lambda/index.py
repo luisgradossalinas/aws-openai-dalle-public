@@ -65,7 +65,7 @@ def lambda_handler(event, context):
             response = requests.get(image_url)
             s3.put_object(Bucket = BUCKET_NAME, Key = FILE_NAME, Body = response.content, ContentType = 'image/png')
     
-            d = datetime.today() - timedelta(hours = 5, minutes = 0) #hora Lima
+            d = datetime.today() - timedelta(hours = 5, minutes = 0)
             date_reg = str(d.strftime("%Y-%m-%d %H:%M:%S"))  
 
             s3_object = s3r.Object(BUCKET_NAME, FILE_NAME)
