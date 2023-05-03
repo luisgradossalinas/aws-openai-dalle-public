@@ -49,6 +49,8 @@ Pegar el resultado en un navegador y veremos la siguiente página.
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235770651-bfd15ec9-618d-4ef7-a45f-c7e0e40bac6a.png">
 
+![image](https://user-images.githubusercontent.com/2066453/235816776-54eb62fc-0641-4879-8f7f-36ce297480ea.png)
+
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235770977-94bdad22-57d1-473d-9fc2-c2c03dc94938.png">
 
 <img width="800" src="https://user-images.githubusercontent.com/2066453/235771210-d6df0128-375c-41da-9ba8-e3270903ba10.png">
