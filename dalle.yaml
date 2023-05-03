@@ -63,14 +63,14 @@ Resources:
     Properties:
       Name: !Ref pNameSecret
       Description: Almacena token de OpenAI
-      SecretString: '{"api_key":"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"}' #Ingresa tu API Key de OpenAI
+      SecretString: '{"api_key":"sk-XXXXXX"}' #Ingresa tu API Key de OpenAI
 
   rSecretUltraMsg:
     Type: 'AWS::SecretsManager::Secret'
     Properties:
       Name: !Ref pNameSecretUltraMsg
       Description: Almacena token de OpenAI
-      SecretString: '{"instance" : "instance44701", "token" : "tgy6vzd34v1t3z5i"}' #Ingresa tus datos de ultramsg
+      SecretString: '{"instance" : "instanceXXXXX", "token" : "XXXXX"}' #Ingresa tus datos de ultramsg
 
   rLambdaDalle:
     Type: AWS::Lambda::Function
