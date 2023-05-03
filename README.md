@@ -27,7 +27,7 @@ Ejecutar en Cloud9
 
 Esperamos que se cree el stack en CloudFormation.
 
-Una vez creado el stack, ejecutamos en Cloud9 lo siguiente para iniciar la aplicación web en Flask.
+Una vez creado el stack, ejecutamos en Cloud9 lo siguiente para iniciar la aplicación web en Flask (en un escenario productivo, la aplicación se puede dockerizar e implementar con Fargate y un balanceador de carga).
 
 	python3 web/app.py
 
